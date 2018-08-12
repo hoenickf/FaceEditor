@@ -1,9 +1,5 @@
-import pygame
-import random
 import numpy as np
-import cv2
-import h5py
-from dutil import *
+import pygame
 
 #User constants
 device = "cpu"
@@ -53,19 +49,8 @@ os.environ['THEANORC'] = "./" + device + ".theanorc"
 os.environ['KERAS_BACKEND'] = "theano"
 import theano
 print "Theano Version: " + theano.__version__
-from keras.models import Sequential, load_model, model_from_json
-from keras.layers import Dense, Activation, Dropout, Flatten, Reshape
-from keras.layers.convolutional import Conv2D, Conv2DTranspose, ZeroPadding2D
-from keras.layers.pooling import MaxPooling2D
-from keras.layers.noise import GaussianNoise
-from keras.layers.local import LocallyConnected2D
-from keras.optimizers import Adam, RMSprop, SGD
-from keras.regularizers import l2
-from keras.layers.advanced_activations import ELU
-from keras.preprocessing.image import ImageDataGenerator
-from keras.utils import plot_model
+from keras.models import load_model
 from keras import backend as K
-from custom_layers import BinaryEncoder
 K.set_image_data_format('channels_first')
 
 print "Loading Encoder..."

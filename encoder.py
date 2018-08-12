@@ -1,8 +1,7 @@
-import sys, random
 import numpy as np
 from matplotlib import pyplot as plt
+
 from dutil import *
-import pydot
 
 SHIFT_AMOUNT = 9
 BATCH_SIZE = 8
@@ -42,26 +41,20 @@ print "Loaded " + str(num_samples) + " Samples."
 #  Create Model
 ###################################
 print "Loading Keras..."
-import os, math
+import os
+
 os.environ['THEANORC'] = "./gpu.theanorc"
 os.environ['KERAS_BACKEND'] = "theano"
 import theano
 print "Theano Version: " + theano.__version__
 
-from keras.initializers import RandomUniform
-from keras.layers import Input, Dense, Activation, Dropout, Flatten, Reshape, SpatialDropout2D
-from keras.layers.convolutional import Conv2D, Conv2DTranspose, UpSampling2D
+from keras.layers import Activation, Flatten, Reshape
+from keras.layers.convolutional import Conv2DTranspose
 from keras.layers.embeddings import Embedding
-from keras.layers.local import LocallyConnected2D
-from keras.layers.pooling import MaxPooling2D
-from keras.layers.noise import GaussianNoise
 from keras.models import Model, Sequential, load_model
-from keras.optimizers import Adam, RMSprop, SGD
-from keras.preprocessing.image import ImageDataGenerator
-from keras.regularizers import l1
+from keras.optimizers import Adam
 from keras.utils import plot_model
 from keras import backend as K
-from custom_layers import BinaryEncoder, PATCON
 K.set_image_data_format('channels_first')
 
 if CONTINUE_TRAIN:
